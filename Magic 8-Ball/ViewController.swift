@@ -11,19 +11,32 @@ import UIKit
 class ViewController: UIViewController {
     
     var circleButton = UIButton()
-    var otherButton = UIButton()
+    var resetButton = UIButton()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.black
+        let circle = UIView(frame: CGRect(x: UIScreen.main.bounds.width/7.2, y: UIScreen.main.bounds.height/3, width: 300, height: 300))
+        circle.backgroundColor = UIColor.clear
+        circle.layer.borderWidth = 300
+        circle.layer.borderColor = UIColor.white.cgColor
+        circle.layer.cornerRadius = 300/2
+        self.view.addSubview(circle)
         circleButton.backgroundColor = UIColor.white
-        
-        circleButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width/2, y: UIScreen.main.bounds.height/2, width: 30, height: 30))
-        circleButton.layer.cornerRadius = 200
-        circleButton.clipsToBounds = true
+        circleButton = UIButton(frame: CGRect(x: 60, y: 300, width: 300, height: 300))
         circleButton.setTitle("8", for: .normal)
+        circleButton.setTitleColor(UIColor.black, for: .normal)
+        circleButton.titleLabel?.font = UIFont.systemFont(ofSize: 90.0, weight: .bold)
+        circleButton.addTarget(self, action: #selector(self.pressed), for: .touchUpInside)
         self.view.addSubview(circleButton)
-        otherButton.backgroundColor = UIColor.white
         
+    
+    }
+    
+    @objc func pressed (sender: UIButton!)
+    {
+        circleButton.isHidden = true
+        resetButton.isHidden = false
+        print("pressed")
     }
 
 
